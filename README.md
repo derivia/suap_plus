@@ -1,4 +1,4 @@
-# UEPB+
+# SUAP+
 
 @TODO: Uma extensão que <preencher>
 
@@ -6,7 +6,7 @@
 
 ### Firefox
 
-1. Instale de [Extensões Firefox](https://addons.mozilla.org/en-US/firefox/addon/uepbplus).
+1. Instale de [Extensões Firefox](https://addons.mozilla.org/en-US/firefox/addon/suapplus).
 
 ### Chrome
 
