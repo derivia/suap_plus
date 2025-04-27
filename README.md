@@ -1,6 +1,6 @@
 # SUAP+
 
-@TODO: Uma extensão que <preencher>
+Uma extensão que melhora a experiência de uso do SUAP da UEPB.
 
 ## Instalação
 
