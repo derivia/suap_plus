@@ -5,6 +5,19 @@ const observer = new MutationObserver((_, observer) => {
 	const tbody = table.querySelector("tbody");
 	const rows = tbody.querySelectorAll("tr");
 
+	const totalFaltasHeader = table.querySelector("th#th_total_faltas");
+	if (
+		totalFaltasHeader &&
+		totalFaltasHeader.textContent.trim() === "Total de Faltas"
+	) {
+		const totalFaltasHeaderSpan = document.createElement("span");
+		const totalFaltasHeaderSeparator = document.createElement("br");
+		totalFaltasHeaderSpan.textContent = " (Faltas disponíveis)";
+		totalFaltasHeaderSpan.style.color = "#DE4131";
+		totalFaltasHeader.appendChild(totalFaltasHeaderSeparator);
+		totalFaltasHeader.appendChild(totalFaltasHeaderSpan);
+	}
+
 	rows.forEach((row) => {
 		const totalAulasCell = row.querySelector('td[headers="th_total_aulas"]');
 		const totalFaltasCell = row.querySelector('td[headers="th_total_faltas"]');
@@ -21,16 +34,11 @@ const observer = new MutationObserver((_, observer) => {
 
 		const faltasText = totalFaltasCell.textContent.trim();
 
-		const separador = document.createElement("span");
-		separador.textContent = " - ";
-
 		const faltasRestantesSpan = document.createElement("span");
-		faltasRestantesSpan.textContent = faltasRestantes;
-		faltasRestantesSpan.style.color =
-			faltasRestantes < 0 ? "#DE4131" : "#41AE3E";
+		faltasRestantesSpan.textContent = ` (${parseInt(faltasRestantes / 2)} dias)`;
+		faltasRestantesSpan.style.color = "#DE4131";
 
 		totalFaltasCell.textContent = faltasText;
-		totalFaltasCell.appendChild(separador);
 		totalFaltasCell.appendChild(faltasRestantesSpan);
 	});
 	observer.disconnect();
