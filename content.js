@@ -19,8 +19,19 @@ const observer = new MutationObserver((_, observer) => {
 		const faltasPermitidas = Math.floor(totalAulas * 0.25);
 		const faltasRestantes = faltasPermitidas - totalFaltas;
 
-		const cor = faltasRestantes < 0 ? "#DE4131" : "#41AE3E";
-		totalFaltasCell.innerHTML += `<span> - </span><span style="color: ${cor}">${faltasRestantes}</span>`;
+		const faltasText = totalFaltasCell.textContent.trim();
+
+		const separador = document.createElement("span");
+		separador.textContent = " - ";
+
+		const faltasRestantesSpan = document.createElement("span");
+		faltasRestantesSpan.textContent = faltasRestantes;
+		faltasRestantesSpan.style.color =
+			faltasRestantes < 0 ? "#DE4131" : "#41AE3E";
+
+		totalFaltasCell.textContent = faltasText;
+		totalFaltasCell.appendChild(separador);
+		totalFaltasCell.appendChild(faltasRestantesSpan);
 	});
 	observer.disconnect();
 });
